@@ -42,4 +42,7 @@ jobs:
       - name: Install importer dependencies
         run: pip install -r imports/requirements.txt
       - name: Import selected department
-        run: python imports/import_department.py --department "${{ inputs.department }}" --vintage "${{ inputs.vintage }}"
+        env:
+          INPUT_DEPARTMENT: ${{ inputs.department }}
+          INPUT_VINTAGE: ${{ inputs.vintage }}
+        run: python imports/import_department.py --department "$INPUT_DEPARTMENT" --vintage "$INPUT_VINTAGE"
