@@ -1,0 +1,3 @@
+psycopg[binary]==3.2.10
+ijson==3.4.0
+requests==2.32.5
