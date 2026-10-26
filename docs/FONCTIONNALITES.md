@@ -2,7 +2,7 @@
 
 ## Version 0.1.0
 - Créer, choisir et supprimer des projets.
-- Importer localement des FeatureCollection GeoJSON composées de Polygon et MultiPolygon (limite 25 Mo).
+- Importer localement des FeatureCollection GeoJSON composées de Polygon et MultiPolygon (sans limite fixe côté interface ; avertissement au-delà de 100 Mo, sous réserve de la mémoire disponible).
 - Associer les parcelles au projet courant.
 - Cliquer dans la liste ou sur la carte pour sélectionner/désélectionner.
 - Afficher la superficie géométrique individuelle et cumulée en hectares.
