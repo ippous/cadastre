@@ -1,24 +1,34 @@
 # Cadastre Web — Élevage de Brot
 
-Application web responsive pour gérer des projets composés de parcelles cadastrales, les visualiser et cumuler leurs surfaces.
+Application web responsive de gestion de projets de parcelles cadastrales.
 
 **Réalisé par l'Élevage de Brot** — https://www.elevagedebrot.com
 
-## Version 0.1.0
-Prototype React, TypeScript, Vite et MapLibre GL JS. Import manuel GeoJSON, carte OSM, sélection de parcelles, surfaces estimées et projets sauvegardés localement dans le navigateur.
-
-## Démarrer
+## Démarrage
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Déployer sur Vercel
-Framework Vite ; commande `npm run build` ; dossier `dist`. Cible : `cadastre.jaume-eric.com` après connexion Vercel et configuration DNS Hostinger.
+Pour compiler : `npm run build`. Déploiement prévu sur Vercel : branche `main`, framework Vite, répertoire de sortie `dist`.
+
+## Version 0.1.0
+Prototype : carte OpenStreetMap (MapLibre), création de projets, import local GeoJSON, sélection de parcelles et cumul estimatif des surfaces, interface responsive, page À propos. Les données sont stockées dans le navigateur (`localStorage`).
+
+**Non encore disponible** : authentification, base connectée, import départemental PCI/EDIGÉO, PWA et données cadastrales à jour chargées automatiquement.
 
 ## Documentation
-Voir `docs/ARCHITECTURE.md`, `docs/FONCTIONNALITES.md`, `docs/IMPORT_CADASTRE.md`, `docs/DEPLOIEMENT.md` et les autres fichiers de `docs/`.
 
-## Limites
-Cette version ne contient pas encore le backend Supabase, l'authentification ni les imports complets par département. Les surfaces calculées depuis GeoJSON sont indicatives et ne remplacent pas une contenance cadastrale officielle.
+- [Architecture](docs/ARCHITECTURE.md)
+- [Fonctionnalités](docs/FONCTIONNALITES.md)
+- [Modèle de données](docs/MODELE_DONNEES.md)
+- [Imports](docs/IMPORT_CADASTRE.md)
+- [API](docs/API.md)
+- [Interface mobile](docs/INTERFACE.md)
+- [Déploiement](docs/DEPLOIEMENT.md)
+- [Configuration](docs/CONFIGURATION.md)
+- [Exploitation](docs/EXPLOITATION.md)
+- [Roadmap](docs/ROADMAP.md)
+
+Les superficies GeoJSON sont indicatives et ne remplacent pas une référence cadastrale officielle.
