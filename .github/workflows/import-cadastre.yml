@@ -1,0 +1,45 @@
+name: Import Cadastre Department
+run-name: Import cadastre ${{ inputs.department }} (${{ inputs.vintage }})
+on:
+  workflow_dispatch:
+    inputs:
+      department:
+        description: "Code département (exemple 89)"
+        required: true
+        default: "89"
+        type: string
+      vintage:
+        description: "Millésime YYYY-MM-DD"
+        required: true
+        default: "2026-09-01"
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: cadastre-import-${{ inputs.department }}
+  cancel-in-progress: false
+jobs:
+  import:
+    name: Import département vers PostGIS
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    environment: cadastre-import
+    env:
+      DATABASE_URL: ${{ secrets.CADASTRE_DATABASE_URL }}
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check connection secret
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::Add CADASTRE_DATABASE_URL as a secret in environment cadastre-import."
+            exit 1
+          fi
+      - name: Install importer dependencies
+        run: pip install -r imports/requirements.txt
+      - name: Import selected department
+        run: python imports/import_department.py --department "${{ inputs.department }}" --vintage "${{ inputs.vintage }}"
