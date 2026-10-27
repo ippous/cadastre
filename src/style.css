@@ -9,3 +9,12 @@
 .style-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .property-panel label:has(input[type="checkbox"]){display:flex;align-items:center}
 @media(max-width:720px){.property-panel{margin:8px 0}.style-grid{gap:8px}}
+
+.cadastre-search{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:8px 0}
+.cadastre-search label{display:grid;gap:4px;font-size:12px}
+.cadastre-search label:first-child{grid-column:1 / -1}
+.cadastre-search input{width:100%;min-width:0;padding:8px;border:1px solid #cbdad2;border-radius:6px}
+.cadastre-search button{grid-column:1 / -1;background:#e5f1e9}
+.search-results{display:flex;flex-direction:column;gap:5px;max-height:180px;overflow:auto;padding:6px 0}
+.search-results button{text-align:left;font-size:12px}
+.search-results button:disabled{opacity:.55;cursor:default}
