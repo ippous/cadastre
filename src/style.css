@@ -25,3 +25,9 @@
 .cloud-account small{color:#256a48}
 
 .cadastre-toggle{display:flex!important;align-items:center;gap:6px;white-space:nowrap;font-size:12px}.cadastre-toggle input{width:16px;height:16px;accent-color:#d77c00}.toolbar{height:auto;min-height:55px;flex-wrap:wrap}.toolbar label{white-space:nowrap}@media(max-width:720px){.toolbar{padding:6px;gap:6px}.cadastre-toggle{order:3;width:100%}}
+
+.map-info{position:absolute;right:16px;bottom:18px;z-index:3;width:min(310px,calc(100% - 32px));background:rgba(255,255,255,.96);border:1px solid #d1d9d4;border-radius:10px;padding:13px;box-shadow:0 5px 24px #0003;display:grid;gap:7px;font-size:13px}
+.map-info .between{gap:12px}.map-info strong{font-size:15px}.map-info .primary{margin-top:4px}
+.map-context{position:absolute;z-index:6;min-width:200px;background:white;border:1px solid #d1d9d4;border-radius:8px;box-shadow:0 5px 20px #0004;padding:6px;display:grid;gap:4px}
+.map-context button{text-align:left;font-size:13px}
+@media(max-width:720px){.map-info{right:8px;left:8px;bottom:75px;width:auto;max-height:35dvh;overflow:auto;padding:9px;font-size:12px}.map-info strong{font-size:13px}}
