@@ -10,7 +10,7 @@ async function request(path:string,options:RequestInit={},token?:string){
  const text=await resp.text();return text?JSON.parse(text):null;
 }
 export async function login(email:string,password:string,signup=false){
- const endpoint=signup?'/auth/v1/signup':'/auth/v1/token?grant_type=password';
+ const endpoint=signup?'/auth/v1/signup?redirect_to='+encodeURIComponent(location.origin+'/'):'/auth/v1/token?grant_type=password';
  const r=await request(endpoint,{method:'POST',body:JSON.stringify({email,password})});
  if(!r.access_token){if(signup)throw Error('Compte créé. Confirme ton adresse email avant de te connecter.');throw Error('Session absente')}
  const session:Session={access_token:r.access_token,refresh_token:r.refresh_token,expires_at:Date.now()+r.expires_in*1000,user:r.user};
