@@ -47,3 +47,25 @@ export async function saveQuery(token:string,query:{project_id:string;name:strin
 export async function deleteQuery(token:string,id:string){
  await request('/rest/v1/land_saved_queries?id=eq.'+encodeURIComponent(id),{method:'DELETE'},token);
 }
+
+export async function requestPasswordReset(email:string){
+ return request('/auth/v1/recover?redirect_to='+encodeURIComponent(location.origin+'/?auth=recovery'),{method:'POST',body:JSON.stringify({email})});
+}
+export async function changePassword(accessToken:string,password:string){
+ await request('/auth/v1/user',{method:'PUT',body:JSON.stringify({password})},accessToken);
+}
+export function startGoogleLogin(){
+ const redirect=location.origin+'/?auth=callback';
+ location.assign(url+'/auth/v1/authorize?provider=google&redirect_to='+encodeURIComponent(redirect));
+}
+export async function completeAuthCallback(){
+ const hash=new URLSearchParams(location.hash.slice(1));
+ const access_token=hash.get('access_token'),refresh_token=hash.get('refresh_token');
+ if(!access_token||!refresh_token)throw Error(hash.get('error_description')||'Jeton de connexion absent');
+ const user=await request('/auth/v1/user',{},access_token);
+ const expires_in=Number(hash.get('expires_in')||3600);
+ const session:Session={access_token,refresh_token,expires_at:Date.now()+expires_in*1000,user};
+ saveSession(session);
+ history.replaceState(null,'',location.pathname);
+ return session;
+}
