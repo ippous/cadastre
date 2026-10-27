@@ -1,0 +1,2 @@
+-- Read-only RPC: see live project migration public_readonly_cadastre_search. Search bounded by an exact INSEE commune code, with optional section/number. 
+-- Applied to Supabase project Cadastre, retain SQL definition in database migration history.
