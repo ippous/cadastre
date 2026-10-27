@@ -1,7 +1,14 @@
 """Import Etalab cadastral GeoJSON.gz by batches into PostGIS (server only)."""
 import argparse, gzip, json, os, tempfile
+from decimal import Decimal
 from pathlib import Path
 import ijson, psycopg, requests
+
+def json_safe(value):
+    """Convert ijson Decimal values without losing cadastral coordinate precision."""
+    if isinstance(value, Decimal):
+        return float(value)
+    raise TypeError(f'Unsupported JSON value: {type(value).__name__}')
 
 def run(dept,vintage,path=None):
     dsn=os.environ['DATABASE_URL']
@@ -35,7 +42,7 @@ def run(dept,vintage,path=None):
                         if not ident: ident=f'{commune}-{section}-{number}' if all((commune,section,number)) else ''
                         if not ident: raise ValueError('Parcel missing cadastral identifier')
                         ident=ident if ident.startswith(dept) else f'{dept}:{ident}'
-                        rows.append((ident,dept,commune,section,number,vintage,json.dumps(props),json.dumps(g)))
+                        rows.append((ident,dept,commune,section,number,vintage,json.dumps(props, default=json_safe),json.dumps(g, default=json_safe)))
                         if len(rows)>=500:
                             upsert(db,rows,job,count+len(rows));count+=len(rows);rows.clear()
                     if rows: upsert(db,rows,job,count+len(rows));count+=len(rows)
