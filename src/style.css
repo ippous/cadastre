@@ -18,3 +18,8 @@
 .search-results{display:flex;flex-direction:column;gap:5px;max-height:180px;overflow:auto;padding:6px 0}
 .search-results button{text-align:left;font-size:12px}
 .search-results button:disabled{opacity:.55;cursor:default}
+
+.cloud-account{border:1px solid #c9d9ce;background:#f4faf6;padding:10px;border-radius:9px;display:flex;flex-direction:column;gap:8px;margin-bottom:15px}
+.cloud-account h3{margin:0}.cloud-account input{border:1px solid #cbdad2;border-radius:6px;padding:9px;width:100%}
+.cloud-account p{margin:0}.account-actions{display:flex;gap:6px}.account-actions button{flex:1;font-size:12px}
+.cloud-account small{color:#256a48}
