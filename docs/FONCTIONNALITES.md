@@ -12,3 +12,6 @@
 
 ## À venir
 Authentification, multi-utilisateur, stockage PostGIS, chargement cadastral par département, fond IGN, recherche commune/section/numéro, export CSV/Excel/GeoJSON/PDF, PWA.
+
+## Gestion des parcelles par projet (étape en cours)
+Chaque projet associe des parcelles cadastrales sans modifier la donnée officielle. Chaque association reçoit un tableau de tags, une couleur de remplissage, une transparence, une couleur/épaisseur de contour et un état visible/masqué. Une sélection sur le plan ou dans la liste ouvre un panneau de propriétés. La version React actuelle permet de modifier ces propriétés sur les GeoJSON déjà importés localement ; le stockage distant est préparé en SQL (`supabase/project_styles.sql`) mais **non relié au frontend**. Pour charger un département depuis PostGIS, il reste à mettre en place une API de lecture cartographique paginée et la gestion de l'authentification.
