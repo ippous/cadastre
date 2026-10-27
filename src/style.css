@@ -31,3 +31,24 @@
 .map-context{position:absolute;z-index:6;min-width:200px;background:white;border:1px solid #d1d9d4;border-radius:8px;box-shadow:0 5px 20px #0004;padding:6px;display:grid;gap:4px}
 .map-context button{text-align:left;font-size:13px}
 @media(max-width:720px){.map-info{right:8px;left:8px;bottom:75px;width:auto;max-height:35dvh;overflow:auto;padding:9px;font-size:12px}.map-info strong{font-size:13px}}
+
+/* Fit Chrome viewport: header and footer never push the map off-screen */
+html,body,#root{height:100%;width:100%;margin:0;overflow:hidden}
+.app{height:100dvh;min-height:0;max-height:100dvh;overflow:hidden}
+header{flex:0 0 58px;min-height:0}footer{flex:0 0 auto}
+.workspace{height:auto;min-height:0;flex:1;overflow:hidden}
+.workspace aside{height:100%;min-height:0;overflow-y:auto;overflow-x:hidden}
+.map-side{height:100%;min-height:0;overflow:hidden;position:relative}
+.map{height:0;min-height:0;flex:1}
+.toolbar{flex:0 0 auto;max-width:100%;overflow:hidden}
+.map-info{bottom:12px;right:12px;max-height:min(60dvh,480px);overflow-y:auto;overscroll-behavior:contain;overflow-wrap:anywhere;min-width:0;max-width:calc(100% - 24px)}
+.map-context{max-width:calc(100% - 12px)}
+.between{min-width:0;flex-wrap:wrap}
+.cloud-account{min-width:0;width:100%;max-width:100%}
+.tag-query{display:grid;gap:8px;padding:10px;background:#f3f8f4;border-radius:9px;border:1px solid #d4e5d8;margin:12px 0}
+.tag-query h2{margin:0}.tag-query input:not([type=checkbox]){width:100%;min-width:0;padding:8px;border:1px solid #cbdad2;border-radius:6px}
+.tag-query label{font-size:12px}.tag-choices{display:flex;flex-wrap:wrap;gap:6px;max-height:100px;overflow:auto}.tag-choices label{display:flex;align-items:center;gap:4px;background:white;padding:5px;border-radius:6px}
+.saved-query-list{display:grid;gap:4px}.saved-query{display:flex;gap:5px;min-width:0}.saved-query button:first-child{flex:1;min-width:0;text-align:left}
+.inspect-tags{display:grid;gap:6px;border-top:1px solid #ddd;padding-top:8px}.tag-pills{display:flex;flex-wrap:wrap;gap:5px}.tag-pills button{font-size:12px;padding:4px 6px}
+.tag-entry{display:flex;gap:5px}.tag-entry input{min-width:0;flex:1;padding:7px;border:1px solid #ccc;border-radius:6px}
+@media(max-width:720px){header{flex-basis:54px}.workspace{height:auto}.workspace aside{top:54px;bottom:0;height:auto;max-height:calc(100dvh - 54px)}.map-info{bottom:68px;max-height:30dvh}.phone-tabs,.phone-summary{flex-shrink:0}}
