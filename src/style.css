@@ -23,3 +23,5 @@
 .cloud-account h3{margin:0}.cloud-account input{border:1px solid #cbdad2;border-radius:6px;padding:9px;width:100%}
 .cloud-account p{margin:0}.account-actions{display:flex;gap:6px}.account-actions button{flex:1;font-size:12px}
 .cloud-account small{color:#256a48}
+
+.cadastre-toggle{display:flex!important;align-items:center;gap:6px;white-space:nowrap;font-size:12px}.cadastre-toggle input{width:16px;height:16px;accent-color:#d77c00}.toolbar{height:auto;min-height:55px;flex-wrap:wrap}.toolbar label{white-space:nowrap}@media(max-width:720px){.toolbar{padding:6px;gap:6px}.cadastre-toggle{order:3;width:100%}}
