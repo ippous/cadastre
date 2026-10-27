@@ -36,3 +36,14 @@ export async function saveProjects(token:string,userId:string,projects:Array<{id
  }
 }
 export async function deleteProject(token:string,id:string){await request('/rest/v1/land_projects?id=eq.'+encodeURIComponent(id),{method:'DELETE'},token)}
+
+export type SavedQuery={id:string;project_id:string;name:string;tags:string[];match_mode:'any'|'all'};
+export async function getSavedQueries(token:string,projectId:string):Promise<SavedQuery[]>{
+ return await request('/rest/v1/land_saved_queries?select=id,project_id,name,tags,match_mode&project_id=eq.'+encodeURIComponent(projectId)+'&order=name.asc',{},token);
+}
+export async function saveQuery(token:string,query:{project_id:string;name:string;tags:string[];match_mode:'any'|'all'}){
+ return await request('/rest/v1/land_saved_queries',{method:'POST',headers:{Prefer:'return=representation'},body:JSON.stringify(query)},token);
+}
+export async function deleteQuery(token:string,id:string){
+ await request('/rest/v1/land_saved_queries?id=eq.'+encodeURIComponent(id),{method:'DELETE'},token);
+}
