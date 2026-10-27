@@ -69,3 +69,11 @@ export async function completeAuthCallback(){
  history.replaceState(null,'',location.pathname);
  return session;
 }
+
+export type LoadedDepartment={department:string;vintage:string;processed:number;loaded_at:string};
+export type DepartmentRequest={id:string;department:string;vintage:string;status:string;requested_at:string};
+export async function getLoadedDepartments():Promise<LoadedDepartment[]>{return await request('/rest/v1/rpc/cadastre_departments_loaded',{method:'POST',body:'{}'})}
+export async function getMyDepartmentRequests(token:string):Promise<DepartmentRequest[]>{return await request('/rest/v1/cadastre_import_requests?select=id,department,vintage,status,requested_at&order=requested_at.desc&limit=30',{},token)}
+export async function requestDepartmentImport(token:string,userId:string,department:string,vintage:string){
+ return await request('/rest/v1/cadastre_import_requests',{method:'POST',body:JSON.stringify({department,vintage,requested_by:userId,status:'pending'})},token)
+}
