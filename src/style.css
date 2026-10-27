@@ -52,3 +52,5 @@ header{flex:0 0 58px;min-height:0}footer{flex:0 0 auto}
 .inspect-tags{display:grid;gap:6px;border-top:1px solid #ddd;padding-top:8px}.tag-pills{display:flex;flex-wrap:wrap;gap:5px}.tag-pills button{font-size:12px;padding:4px 6px}
 .tag-entry{display:flex;gap:5px}.tag-entry input{min-width:0;flex:1;padding:7px;border:1px solid #ccc;border-radius:6px}
 @media(max-width:720px){header{flex-basis:54px}.workspace{height:auto}.workspace aside{top:54px;bottom:0;height:auto;max-height:calc(100dvh - 54px)}.map-info{bottom:68px;max-height:30dvh}.phone-tabs,.phone-summary{flex-shrink:0}}
+
+.api-help{max-height:100%;overflow:auto}.api-help pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf3ee;padding:12px;border-radius:7px;font-size:12px}.api-help code{overflow-wrap:anywhere}
